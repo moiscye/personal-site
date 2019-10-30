@@ -19,5 +19,6 @@ module.exports = app => {
       html: contactEmail(req.body)
     };
     sgMail.send(msg);
+    res.send("success");
   });
 };

@@ -107,8 +107,8 @@ export default class ContactModal extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     console.log("this.state", this.state);
-    // this.props.handleClose();
-    // axios.post("/api/contact", this.state.contactDetails);
+   
+    axios.post("/api/contact", this.state.contactDetails);
   };
 
   render() {

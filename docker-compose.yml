@@ -1,0 +1,32 @@
+version: "3"
+services:  
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      # specify teh folder or context
+      context: ./server
+    volumes:
+      # avoid overriding the node_modules folder
+      - /app/node_modules
+      # copy everything in /server folder  to /app folder
+      # except the node_modules folder set to be avoided in the prior instruction
+      - .//server:/app
+    environment:
+      # set the env variables
+      - SEND_GRID_KEY=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
+   
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - .//client:/app
+  
