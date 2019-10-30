@@ -1,6 +1,6 @@
 const contactEmail = require("../services/emailTemplates/contactEmail");
 // const Email = mongoose.model("emails");
-const keys = require("../config/keys");
+const keys = require("../config/dev");
 const sgMail = require("@sendgrid/mail");
 module.exports = app => {
   app.get("/api/contact", (req, res) => {
