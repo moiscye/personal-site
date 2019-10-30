@@ -1,0 +1,17 @@
+# base image 
+FROM node:alpine
+
+#Creating a isolated working directory
+WORKDIR /app
+
+#copying dependencies files
+COPY ./package.json .
+
+# Installing dependencies
+RUN npm install
+
+#Copying rest of the files
+COPY . .
+
+# commands 
+CMD [ "npm", "start" ]

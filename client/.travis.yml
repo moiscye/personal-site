@@ -1,0 +1,27 @@
+#sudo permissions for installing docker
+sudo: required
+
+#installing docker
+services:
+  - docker
+
+#this instruction happens before installing
+before_install:
+  - docker build -t moiscye/docker-personal-site -f Dockerfile.dev .
+  #telling travis to run our test. CI-true needed to end the test after finish it
+script:
+  - docker run -e CI=true moiscye/docker-personal-site npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "docker-personal-site"
+  env: "DockerPersonalSite-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-508651004710"
+  bucket_path: "docker-personal-site"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
