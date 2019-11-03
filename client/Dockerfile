@@ -7,7 +7,7 @@ WORKDIR '/app'
 
 #copying the package.json file only from the root folder
 #avoiding to copy the node_modules files
-COPY package.json .
+COPY ./package.json ./
 
 #installing the packages 
 RUN npm install
@@ -23,8 +23,7 @@ RUN npm run build
 FROM nginx
 
 #exposing  port in production
-EXPOSE 80
+EXPOSE 3000
 
-#copying the build folder created in the first phase
-#the destination folder is found in the nginx documentation
-COPY --from=builder /app/build /usr/share/nginx/html
+#copying the default configuration file
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
