@@ -55,8 +55,8 @@ const experiences_list = [
     position: "Software Developer",
     details: [
       "Designing, developing and delivering high-volume applications for critical systems",
-      "Analyzing user requirements; envisioning system features and functionality",
-      "Integrate applications; studying and establishing connectivity with search engines, and information servers",
+      "Analyzing user requirements, envisioning system features and functionality",
+      "Integrate applications, studying and establishing connectivity with search engines, and information servers",
       "Design and develop web services",
       "Support users by developing documentation and assistance tools"
     ]
@@ -87,7 +87,7 @@ const ExperienceContainer = styled.div`
 	`}
 `;
 
-const Image = styled.div`
+const Logo = styled.div`
   flex: 0 0 auto;
   margin-right: 3rem;
   height: 12rem;
@@ -103,7 +103,7 @@ const Image = styled.div`
   }
 
   ${media.sizeMedium`
-		height: 10rem;
+		height: 8rem;
 		width: 10rem;
 	`}
 
@@ -161,9 +161,9 @@ class Experience extends Component {
           {experiences_list.map(
             ({ logoPath, company, link, position, duration, details }, i) => (
               <ExperienceContainer key={i}>
-                <Image className="scrollreveal">
+                <Logo className="scrollreveal">
                   <img src={logoPath} alt={company} />
-                </Image>
+                </Logo>
                 <div className="scrollreveal">
                   <Company target="_blank" rel="noopener" href={link}>
                     {company}

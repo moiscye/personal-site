@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { media } from "../../utils/mediaQueriesBuilder";
 import { H1 } from "../../utils/typography";
 
-const Form = styled.form``;
+const Form = styled.form`
+  ${media.sizeSmall3`
+    width: 80%;
+	`}
+`;
 const Row2 = styled.div`
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   column-gap: 1.5rem;
+  ${media.sizeSmall3`
+    grid-template-columns:  1fr;
+    row-gap: 1rem;
+	`}
 `;
 const Row3 = styled.div`
   display: grid;
@@ -41,6 +50,15 @@ const Input = styled.input`
   :focus {
     background: #372f2f;
     transform: scale(1.02);
+  }
+
+  /* Change the white to any color ;) */
+  :-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus,
+  :-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #372f2f inset !important;
+    -webkit-text-fill-color: #ddd !important;
   }
 `;
 
@@ -95,7 +113,14 @@ export default class ContactModal extends Component {
         message: ""
       }
     };
+
+    this.nameInput = React.createRef();
   }
+
+  componentDidMount() {
+    this.nameInput.current.focus();
+  }
+
   handleChange = e => {
     var data = { ...this.state.contactDetails };
     data[e.target.id] = e.target.value;
@@ -107,8 +132,20 @@ export default class ContactModal extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     console.log("this.state", this.state);
-   
+
     axios.post("/api/contact", this.state.contactDetails);
+  };
+
+  reset = () => {
+    this.setState({
+      contactDetails: {
+        name: "",
+        surname: "",
+        phoneNumber: "",
+        email: "",
+        message: ""
+      }
+    });
   };
 
   render() {
@@ -124,6 +161,8 @@ export default class ContactModal extends Component {
               placeholder="Name"
               required
               onChange={this.handleChange}
+              ref={this.nameInput}
+              value={this.state.contactDetails.name}
             />
             <Input
               name="surname"
@@ -131,6 +170,7 @@ export default class ContactModal extends Component {
               type="text"
               placeholder="Surname"
               onChange={this.handleChange}
+              value={this.state.contactDetails.surname}
             />
           </Row2>
 
@@ -142,6 +182,7 @@ export default class ContactModal extends Component {
               placeholder="Email"
               required
               onChange={this.handleChange}
+              value={this.state.contactDetails.email}
             />
             <Input
               name="phoneNumber"
@@ -149,6 +190,7 @@ export default class ContactModal extends Component {
               type="phone"
               placeholder="Phone"
               onChange={this.handleChange}
+              value={this.state.contactDetails.phoneNumber}
             />
           </Row2>
           <TextArea
@@ -156,11 +198,14 @@ export default class ContactModal extends Component {
             onChange={this.handleChange}
             name="message"
             id="message"
+            value={this.state.contactDetails.message}
           />
           <Row3>
             <div></div>
             <Button type="submit">Submit</Button>
-            <Button type="button">Reset</Button>
+            <Button type="button" onClick={this.reset}>
+              Reset
+            </Button>
           </Row3>
         </FormContainer>
       </Form>
