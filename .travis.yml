@@ -1,0 +1,45 @@
+#sudo permissions for installing docker
+sudo: required
+
+#installing docker
+services:
+  - docker
+
+#this instruction happens before installing
+before_install:
+  # bulding our dev dockerfile. Important to add relative path ./client
+  - docker build -t moiscye/react-test -f ./client/Dockerfile.dev ./client
+
+  #telling travis to run our test. CI-true needed to end the test after finish it
+script:
+  - docker run -e CI=true moiscye/react-test npm run test
+  # this happens after all tests passed.
+after_success:
+  # building all production containers
+  - docker build -t moiscye/site-client ./client
+  - docker build -t moiscye/site-nginx ./nginx
+  - docker build -t moiscye/site-server ./server
+  
+
+  # log in into docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # pushing all container to docker hub
+  - docker push moiscye/site-client
+  - docker push moiscye/site-nginx
+  - docker push moiscye/site-server
+  
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "site-docker"
+  env: "SiteDocker-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-508651004710"
+  bucket_path: "site-docker"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
