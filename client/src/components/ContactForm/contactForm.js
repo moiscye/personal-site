@@ -131,8 +131,7 @@ export default class ContactModal extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    console.log("this.state", this.state);
-
+    this.props.hasBeenSubmitted();
     axios.post("/api/contact", this.state.contactDetails);
   };
 

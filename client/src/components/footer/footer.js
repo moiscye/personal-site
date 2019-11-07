@@ -66,16 +66,36 @@ class Footer extends Component {
     super(props);
 
     this.state = {
-      toggleForm: false
+      toggleForm: false,
+      toggleSubmitted: false
     };
     this.toggle = this.toggle.bind(this);
+    this.toggleSubmitted = this.toggleSubmitted.bind(this);
   }
   toggle() {
     this.setState({
-      toggleForm: !this.state.toggleForm
+      toggleForm: !this.state.toggleForm,
+      toggleSubmitted: false
+    });
+  }
+  toggleSubmitted() {
+    this.setState({
+      toggleSubmitted: !this.state.toggleSubmitted
     });
   }
   render() {
+    const renderContactForm = this.state.toggleSubmitted ? (
+      <Title>
+        Thanks for contacting us.
+        <br /> We will be back to you soon!
+      </Title>
+    ) : (
+      <ContactForm
+        toggle={this.toggle}
+        hasBeenSubmitted={this.toggleSubmitted}
+      />
+    );
+
     return (
       <Container>
         <Wrapper className="scrollreveal">
@@ -96,7 +116,7 @@ class Footer extends Component {
           <Socials small />
         </Wrapper>
 
-        {this.state.toggleForm && <ContactForm toggle={this.toggle} />}
+        {this.state.toggleForm && renderContactForm}
       </Container>
     );
   }
