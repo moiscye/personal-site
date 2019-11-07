@@ -27,3 +27,8 @@ EXPOSE 3000
 
 #copying the default configuration file
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
+#copying the build folder created in the first phase
+#the destination folder is found in the nginx documentation
+COPY --from=builder /app/build /usr/share/nginx/html
+
