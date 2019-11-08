@@ -33,7 +33,7 @@ import fontThin from "./fonts/StratumNo1 Thin.ttf";
 import Portfolio from "./components/portfolio/portfolio";
 
 // initialize Google Analytics to collect traffic data
-ReactGA.initialize("UA-151750847-1");
+// ReactGA.initialize("UA-151750847-1");
 
 //global styling
 
@@ -153,6 +153,8 @@ class App extends Component {
     };
 
     ScrollReveal().reveal(".scrollreveal", config);
+
+    ReactGA.initialize("UA-151750847-1");
 
     // register a pageview event for GA
     ReactGA.pageview(window.location.pathname + window.location.search);
