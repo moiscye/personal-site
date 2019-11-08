@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { media } from "../../utils/mediaQueriesBuilder";
-import { H1 } from "../../utils/typography";
 
 const Form = styled.form`
   ${media.sizeSmall3`
@@ -33,10 +32,6 @@ const FormContainer = styled.div`
   color: #ddd;
 `;
 
-const FormTitle = styled(H1)`
-  margin-bottom: 1.5rem;
-  color: #ddd;
-`;
 const Input = styled.input`
   background: #242424;
   padding: 1rem 2rem;
@@ -151,7 +146,6 @@ export default class ContactModal extends Component {
     return (
       <Form id="my-form" onSubmit={this.handleSubmit}>
         <FormContainer>
-          {/* <FormTitle>Get in touch!</FormTitle> */}
           <Row2>
             <Input
               name="name"

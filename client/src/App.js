@@ -6,7 +6,6 @@ import { media } from "./utils/mediaQueriesBuilder";
 //components
 import Particles from "react-particles-js";
 import particlesOptions from "./feed/particlesjs-config";
-import { MeteorComponent } from "../src/utils/meteorShower";
 import NavBar from "./components/navbar/navbar";
 import Header from "../src/components/home/header";
 import AboutMe from "./components/about/about";
@@ -156,7 +155,6 @@ class App extends Component {
       <>
         <GlobalStyle />
         <Particles className="particles-js" params={particlesOptions} />
-        {/* <MeteorComponent num={10} /> */}
         <NavBar />
         <Section id="home" transparent>
           <Header />
