@@ -72,14 +72,13 @@ class AboutMe extends Component {
           <About className="scrollreveal">
             <StyledH2>Welcome to my page!</StyledH2>
             <P>
-              Hello!!! My name is Moises and I am a passionate software engineer
-              with experience in web application and enterprise software
-              development. Dedicated to self-learning and continuous development
-              in skills, qualifications, and knowledge.
+              My name is Moises. A passionate software engineer with experience
+              in web application and enterprise software development. Dedicated
+              to self-learning and continuous development in skills,
+              qualifications, and knowledge.
               <br />
               <br />
-              Please feel free to read more about me. Checkout my resume,
-              projects or contact me.
+              Please feel free to checkout my resume, projects or contact me.
             </P>
           </About>
           <Info className="scrollreveal">

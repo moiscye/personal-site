@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ReactGA from "react-ga";
 import { media } from "../../utils/mediaQueriesBuilder";
 import { Socials } from "../../utils/socials";
 import { H1, P } from "../../utils/typography";
@@ -104,7 +105,16 @@ class Footer extends Component {
             If you would like to know more about me
             <br />
             Email me at:
-            <A href="mailto: moy_085@hotmail.com" rel="noopener">
+            <A
+              href="mailto: moy_085@hotmail.com"
+              rel="noopener"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Footer",
+                  action: "Email click"
+                });
+              }}
+            >
               moy_085@hotmail.com
             </A>
             <br />

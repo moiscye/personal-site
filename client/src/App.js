@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import ScrollReveal from "scrollreveal";
+import ReactGA from "react-ga";
 import { media } from "./utils/mediaQueriesBuilder";
 
 //components
@@ -30,6 +31,9 @@ import fontMedium from "./fonts/StratumNo1 Medium.ttf";
 import fontRegular from "./fonts/StratumNo1 Regular.ttf";
 import fontThin from "./fonts/StratumNo1 Thin.ttf";
 import Portfolio from "./components/portfolio/portfolio";
+
+// initialize Google Analytics to collect traffic data
+ReactGA.initialize("UA-151750847-1");
 
 //global styling
 
@@ -149,6 +153,9 @@ class App extends Component {
     };
 
     ScrollReveal().reveal(".scrollreveal", config);
+
+    // register a pageview event for GA
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
   render() {
     return (

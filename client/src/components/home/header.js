@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import smoothScroll from "../../utils/smoothScroll";
+import ReactGA from "react-ga";
 import { media } from "../../utils/mediaQueriesBuilder";
 import { Socials } from "../../utils/socials";
 import {
@@ -9,7 +10,6 @@ import {
   colorPrimaryDark
 } from "../../utils/variables";
 import { H1, H4 } from "../../utils/typography";
-// import avatar from "../../images/avatar.jpg";
 import avatar from "../../images/me.jpg";
 import resume from "../../images/MoisesCV.pdf";
 
@@ -106,8 +106,29 @@ class Header extends Component {
             &lt; Full-Stack Web Developer &#47;&gt;
           </Status>
           <Buttons className="scrollreveal">
-            <Button onClick={() => smoothScroll("footer")}>Contact Me</Button>
-            <Button secondary href={resume} target="_blank" rel="noopener">
+            <Button
+              onClick={() => {
+                smoothScroll("footer");
+                ReactGA.event({
+                  category: "Home",
+                  action: "Contact Me click"
+                });
+              }}
+            >
+              Contact Me
+            </Button>
+            <Button
+              secondary
+              href={resume}
+              target="_blank"
+              rel="noopener"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Home",
+                  action: "Resume click"
+                });
+              }}
+            >
               Resume
             </Button>
           </Buttons>

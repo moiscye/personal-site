@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ReactGA from "react-ga";
 
 import { ReactComponent as Github } from "../images/icons/github.svg";
 import { ReactComponent as Linkedin } from "../images/icons/linkedin.svg";
@@ -39,7 +40,12 @@ export const Socials = ({ small }) => {
         href="https://github.com/moiscye"
         target="_blank"
         rel="noopener"
-        onClick={() => {}}
+        onClick={() => {
+          ReactGA.event({
+            category: "Home",
+            action: "GitHub icon"
+          });
+        }}
       >
         <Github />
       </SocialIcon>
@@ -48,7 +54,12 @@ export const Socials = ({ small }) => {
         href="https://www.linkedin.com/in/moisesdcruz"
         target="_blank"
         rel="noopener"
-        onClick={() => {}}
+        onClick={() => {
+          ReactGA.event({
+            category: "Home",
+            action: "Linkedin icon"
+          });
+        }}
       >
         <Linkedin />
       </SocialIcon>
