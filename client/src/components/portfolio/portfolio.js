@@ -37,9 +37,9 @@ const portfolio_array = [
     icons: [4, 5, 6, 9],
     title: "Nexter",
     text:
-      "Responsive real estate App made with react node and express. The front end is styled using sass with CSS Grid Layout. It also uses Sendgrid for the contact form. Check it out!!!",
-    liveLink: "https://nexter-rs.herokuapp.com/",
-    sourceLink: "https://github.com/moiscye/Nexter-react"
+      "Real estate Responsive website made with CSS Grid. This website will allow clients to easy find their dream luxury Home.",
+    liveLink: "",
+    sourceLink: ""
   },
 
   {
@@ -135,10 +135,11 @@ const Button = styled.a`
   padding: 0.5rem 1rem;
   border-radius: 4px;
   color: #fff;
-  background-color: ${props => (props.secondary ? colorGrey4 : colorPrimaryLight)};
+  background-color: ${props =>
+    props.secondary ? colorGrey4 : colorPrimaryLight};
 
   & > * {
-    animation: ${props => (props.twinkle ? twinkleEffect : "none")} 3s infinite;
+    animation: ${props => (props.twinkle ? "none" : "none")} 3s infinite;
   }
 
   :not(:last-child) {
@@ -193,7 +194,7 @@ const ShowAllBtn = styled.button`
   color: ${colorGrey4};
   border: none;
   border-bottom: 1px solid ${colorGrey4};
-  /* animation: ${twinkleEffect} 3s infinite; */
+  animation: ${twinkleEffect} 3s infinite;
   :hover {
     color: ${colorGrey2};
     border-bottom: 2px solid ${colorGrey2};
@@ -225,7 +226,7 @@ const DetailsComponent = ({ className, icons, title, text }) => {
 const ButtonsComponent = ({ className, title, liveLink, sourceLink }) => {
   return (
     <Buttons className={className}>
-      <Button href={liveLink} target="_blank" rel="noopener" twinkle={liveLink ? true : false}>
+      <Button href={liveLink} target="_blank" rel="noopener" twinkle>
         <WhiteDot id="live" />
         <span>Live</span>
       </Button>
@@ -249,7 +250,11 @@ const CardComponent = ({ className, p_array, isShowAll }) => (
           <img src={imgPath} alt={text} />
         </Image>
         <DetailsComponent icons={icons} title={title} text={text} />
-        <ButtonsComponent title={title} liveLink={liveLink} sourceLink={sourceLink} />
+        <ButtonsComponent
+          title={title}
+          liveLink={liveLink}
+          sourceLink={sourceLink}
+        />
       </Card>
     ))}
   </Cards>
@@ -288,12 +293,16 @@ class Portfolio extends Component {
     return (
       <Container title="Portfolio" transparent>
         <Wrapper>
-          <CardComponent p_array={portfolio_array} isShowAll={this.state.isShowAll} />
+          <CardComponent
+            p_array={portfolio_array}
+            isShowAll={this.state.isShowAll}
+          />
           <ShowAllBtn>
             {/* {this.state.showAllText} */}
 
-            <Button>
+            <Button twinkle>
               <span>More projects coming up soon...</span>
+              <WhiteDot id="live" />
             </Button>
           </ShowAllBtn>
         </Wrapper>
