@@ -37,9 +37,6 @@ const portfolio_array = [
     icons: [4, 5, 6, 9],
     title: "Nexter",
     text:
-      "Real estate Responsive website made with CSS Grid. This website will allow clients to easy find their dream luxury Home.",
-    liveLink: "",
-    sourceLink:
       "Responsive real estate App made with react node and express. The front end is styled using sass with CSS Grid Layout. It also uses Sendgrid for the contact form. Check it out!!!",
     liveLink: "https://nexter-rs.herokuapp.com/",
     sourceLink: "https://github.com/moiscye/Nexter-react"
