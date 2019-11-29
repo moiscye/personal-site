@@ -225,7 +225,7 @@ const DetailsComponent = ({ className, icons, title, text }) => {
 const ButtonsComponent = ({ className, title, liveLink, sourceLink }) => {
   return (
     <Buttons className={className}>
-      <Button href={liveLink} target="_blank" rel="noopener" twinkle>
+      <Button href={liveLink} target="_blank" rel="noopener" twinkle={liveLink ? true : false}>
         <WhiteDot id="live" />
         <span>Live</span>
       </Button>
