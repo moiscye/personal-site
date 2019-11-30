@@ -43,7 +43,7 @@ module.exports = ({ name, surname, phoneNumber, email, message }) => {
           <li> Phone: ${phoneNumber}</li>
           <li> Email: ${email}</li>
           </ul>          
-                 
+          <p>All the best!</p>  
         </div>
       </body>
   `;
