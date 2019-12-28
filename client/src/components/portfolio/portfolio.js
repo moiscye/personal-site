@@ -18,7 +18,7 @@ import { Container } from "../common/container";
 import { svg_icons } from "../../feed/skillIcons";
 import { ReactComponent as GithubSvg } from "../../images/icons/github.svg";
 
-import natours_img from "../../images/portfolio/natours.jpg";
+import eShopland from "../../images/portfolio/e-Shopland.png";
 import nexter_img from "../../images/portfolio/nexter.jpg";
 import trillo_img from "../../images/portfolio/trillo.jpg";
 
@@ -43,13 +43,13 @@ const portfolio_array = [
   },
 
   {
-    imgPath: natours_img,
+    imgPath: eShopland,
     icons: [4, 5, 9],
-    title: "Natours",
+    title: "e-Shopland",
     text:
-      "Tours Booking Pure CSS.Simple, Responsive yet efficient Tour booking website that allows users to easily select their preferred tours",
-    liveLink: "",
-    sourceLink: ""
+      "Responsive shopping web app made with MongoDB, ExpressJS, React, NodeJS, Semantic UI, Sendgrid and more",
+    liveLink: "https://e-shopland.herokuapp.com/",
+    sourceLink: "https://github.com/moiscye/e-commerce"
   }
 ];
 
