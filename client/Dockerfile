@@ -23,7 +23,7 @@ RUN npm run build
 FROM nginx
 
 #exposing  port in production
-EXPOSE 3000
+EXPOSE 3050
 
 #copying the default configuration file
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
