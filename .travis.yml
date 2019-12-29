@@ -31,6 +31,8 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "ap-southeast-2"
+  edge: true
+  provider: elasticbeanstalk
   app: "personal-site"
   env: "PersonalSite-env"
   bucket_name: "elasticbeanstalk-ap-southeast-2-508651004710"
