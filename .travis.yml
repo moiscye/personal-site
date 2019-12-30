@@ -30,13 +30,11 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: "ap-southeast-2"
-  edge: true
-  provider: elasticbeanstalk
-  app: "multi-docker-site"
-  env: "MultiDockerSite-env"
-  bucket_name: "elasticbeanstalk-ap-southeast-2-508651004710"
-  bucket_path: "multi-docker-site"
+  region: "ap-southeast-1"
+  app: "personal-site"
+  env: "PersonalSite-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-508651004710"
+  bucket_path: "personal-site"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
